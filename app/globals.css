@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --ink: #0f0f0f;
+  --ink-2: #1a1a1a;
+  --muted: #7d7a74;
+  --paper: #f5f4f0;
+  --border: #dedbd4;
+  --accent: #e8533a;
+  --accent-2: #f0c060;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Space Grotesk", sans-serif;
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.display-font {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.section-line {
+  border-bottom: 1px solid var(--border);
+}
+
+.eyebrow {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.editorial-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(3.25rem, 7vw, 5rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+.circle-cta {
+  align-items: center;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  color: var(--ink);
+  display: inline-flex;
+  height: 48px;
+  justify-content: center;
+  transition: all 0.25s ease;
+  width: 48px;
+}
+
+.cta-group:hover .circle-cta {
+  background: var(--ink);
+  color: var(--white);
+  transform: rotate(45deg);
+}
+
+.marquee-track {
+  animation: marquee 24s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.photo-blob {
+  background: linear-gradient(135deg, #d4e8c4, #c8e0f0, #f0d4c8);
+  border-radius: 60% 40% 55% 45% / 50% 60% 40% 55%;
+}
+
+.photo-shape {
+  background: #c8c0b8;
+  border-radius: 50% 40% 55% 45% / 50% 60% 40% 55%;
+}
+
+.photo-silhouette {
+  background: linear-gradient(180deg, #888 0%, #555 100%);
+  border-radius: 50% 50% 0 0;
+  height: 90%;
+  position: relative;
+  width: 60%;
+}
+
+.photo-silhouette::before {
+  background: #777;
+  border-radius: 999px;
+  content: "";
+  height: 70px;
+  left: 50%;
+  position: absolute;
+  top: -40px;
+  transform: translateX(-50%);
+  width: 70px;
+}
+
+.paint-mark {
+  border-radius: 52% 48% 61% 39% / 44% 58% 42% 56%;
+  opacity: 0.34;
+  pointer-events: none;
+  transform-origin: center;
+}
+
+.paint-mark::before,
+.paint-mark::after {
+  border-radius: 54% 46% 41% 59% / 48% 35% 65% 52%;
+  content: "";
+  position: absolute;
+}
+
+.paint-mark::before {
+  height: 38%;
+  right: -14%;
+  top: 10%;
+  width: 38%;
+}
+
+.paint-mark::after {
+  bottom: -13%;
+  height: 28%;
+  left: 18%;
+  width: 28%;
+}
+
+.paint-red {
+  background:
+    radial-gradient(circle at 11% 25%, #e8533a 0 5%, transparent 5.6%),
+    radial-gradient(circle at 82% 19%, #e8533a 0 8%, transparent 8.8%),
+    radial-gradient(circle at 72% 86%, #e8533a 0 5.5%, transparent 6.2%),
+    radial-gradient(circle at 28% 70%, rgba(255, 255, 255, 0.24) 0 8%, transparent 8.8%),
+    #e8533a;
+}
+
+.paint-red::before,
+.paint-red::after {
+  background: #e8533a;
+  box-shadow:
+    -28px 44px 0 -8px #e8533a,
+    22px 76px 0 -12px #e8533a,
+    -54px -22px 0 -10px #e8533a;
+}
+
+.paint-yellow {
+  background:
+    radial-gradient(circle at 16% 72%, #f0c060 0 7%, transparent 7.8%),
+    radial-gradient(circle at 88% 64%, #f0c060 0 5.5%, transparent 6.4%),
+    radial-gradient(circle at 62% 24%, rgba(255, 255, 255, 0.26) 0 9%, transparent 10%),
+    #f0c060;
+}
+
+.paint-yellow::before,
+.paint-yellow::after {
+  background: #f0c060;
+  box-shadow:
+    -34px 54px 0 -10px #f0c060,
+    28px 82px 0 -12px #f0c060,
+    -62px -18px 0 -14px #f0c060;
+}
+
+.paint-blue {
+  background:
+    radial-gradient(circle at 18% 30%, #2f6fed 0 6%, transparent 6.8%),
+    radial-gradient(circle at 82% 78%, #2f6fed 0 7%, transparent 7.8%),
+    radial-gradient(circle at 44% 28%, rgba(255, 255, 255, 0.22) 0 8%, transparent 8.8%),
+    #2f6fed;
+}
+
+.paint-blue::before,
+.paint-blue::after {
+  background: #2f6fed;
+  box-shadow:
+    -30px 48px 0 -9px #2f6fed,
+    26px 80px 0 -13px #2f6fed,
+    -58px -20px 0 -11px #2f6fed;
+}
+
+.paint-speckles {
+  height: 160px;
+  opacity: 0.36;
+  pointer-events: none;
+  width: 210px;
+}
+
+.paint-dot-warm {
+  background:
+    radial-gradient(circle, #e8533a 0 18%, transparent 19%) 0 0 / 44px 44px,
+    radial-gradient(circle, #f0c060 0 13%, transparent 14%) 23px 16px / 52px 52px;
+}
+
+.paint-dot-cool {
+  background:
+    radial-gradient(circle, #2f6fed 0 18%, transparent 19%) 0 0 / 42px 42px,
+    radial-gradient(circle, #e8533a 0 12%, transparent 13%) 19px 18px / 54px 54px;
+}
+
+@media (max-width: 768px) {
+  .editorial-title {
+    font-size: clamp(3rem, 18vw, 5rem);
+  }
+
+  .paint-mark {
+    opacity: 0.22;
+  }
+}

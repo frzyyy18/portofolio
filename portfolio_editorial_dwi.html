@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0f0f0f;
+  --ink2:#1a1a1a;
+  --muted:#888;
+  --light:#f5f4f0;
+  --border:#e0deda;
+  --accent:#e8533a;
+  --accent2:#f0c060;
+  --white:#ffffff;
+}
+html{background:#f5f4f0}
+body{background:#f5f4f0;color:var(--ink);font-family:'Space Grotesk',sans-serif;overflow-x:hidden}
+
+/* NAV */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 40px;border-bottom:1px solid var(--border);background:rgba(245,244,240,0.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+.nav-name{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--ink)}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-size:12px;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color .2s;cursor:pointer}
+.nav-links a:hover{color:var(--ink)}
+
+/* HERO */
+.hero{padding:60px 40px 0;position:relative;overflow:hidden;min-height:85vh;display:flex;flex-direction:column;justify-content:flex-end}
+.hero-tag{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.hero-title-wrap{position:relative;z-index:2}
+.hero-line1{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,14vw,148px);line-height:.88;color:var(--ink);letter-spacing:-2px;display:block}
+.hero-line2{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,14vw,148px);line-height:.88;color:var(--ink);letter-spacing:-2px;display:block;margin-bottom:32px}
+.hero-sub-row{display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:40px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:24px}
+.hero-desc{max-width:340px;font-size:13px;color:var(--muted);line-height:1.7;font-weight:400}
+.hero-desc strong{color:var(--ink);font-weight:500}
+.hero-cta{display:flex;align-items:center;gap:12px;cursor:pointer;group:hero}
+.hero-cta-text{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink)}
+.hero-cta-circle{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;transition:all .3s;color:var(--ink)}
+.hero-cta:hover .hero-cta-circle{background:var(--ink);color:var(--white);transform:rotate(45deg)}
+
+/* PHOTO PLACEHOLDER */
+.hero-photo{position:absolute;right:40px;bottom:0;width:340px;height:420px;z-index:1}
+.photo-bg-blob{position:absolute;inset:0;border-radius:60% 40% 55% 45% / 50% 60% 40% 55%;background:linear-gradient(135deg,#d4e8c4,#c8e0f0,#f0d4c8);opacity:.6}
+.photo-placeholder{position:absolute;inset:20px;border-radius:50% 40% 55% 45% / 50% 60% 40% 55%;background:#c8c0b8;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.photo-silhouette{width:60%;height:90%;background:linear-gradient(180deg,#888 0%,#555 100%);border-radius:50% 50% 0 0;margin-bottom:0;position:relative}
+.photo-silhouette::before{content:'';position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:70px;height:70px;border-radius:50%;background:#777}
+.photo-label{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:10px;color:rgba(255,255,255,.6);letter-spacing:2px;text-transform:uppercase}
+
+/* STATS BAR */
+.statsbar{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border)}
+.statitem{padding:28px 40px;border-right:1px solid var(--border)}
+.statitem:last-child{border-right:none}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--ink);line-height:1;letter-spacing:-1px}
+.stat-n em{font-style:normal;font-size:32px;color:var(--muted)}
+.stat-l{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+
+/* MARQUEE */
+.marquee-wrap{overflow:hidden;padding:14px 0;border-bottom:1px solid var(--border);background:var(--ink);position:relative}
+.marquee-track{display:flex;gap:0;width:max-content;animation:mq 22s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-item{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;color:rgba(255,255,255,.35);padding:0 28px;border-right:1px solid rgba(255,255,255,.1)}
+.mq-item.accent{color:var(--accent2)}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
+.about-left{padding:56px 40px;border-right:1px solid var(--border)}
+.about-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.about-h{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:.95;letter-spacing:-1px;color:var(--ink);margin-bottom:20px}
+.about-h em{font-style:italic;color:var(--muted);font-family:'Bebas Neue',sans-serif}
+.about-body{font-size:14px;color:var(--muted);line-height:1.75;max-width:320px}
+.about-right{padding:56px 40px;display:flex;flex-direction:column;gap:0}
+.hl-row{padding:18px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;cursor:default;transition:all .2s;group:true}
+.hl-row:first-child{border-top:1px solid var(--border)}
+.hl-row:hover{padding-left:12px}
+.hl-row-left{display:flex;flex-direction:column;gap:3px}
+.hl-title{font-size:13px;font-weight:600;color:var(--ink);letter-spacing:.5px;text-transform:uppercase}
+.hl-desc{font-size:12px;color:var(--muted)}
+.hl-num{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--border);transition:color .2s}
+.hl-row:hover .hl-num{color:var(--accent)}
+
+/* PROJECTS */
+.projects-header{display:flex;align-items:flex-end;justify-content:space-between;padding:40px 40px 0}
+.proj-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+.proj-big{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:.95;letter-spacing:-1px;color:var(--ink);margin-top:8px}
+.proj-big em{color:var(--accent)}
+.proj-scroll-hint{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-top:24px}
+.proj-card{border-right:1px solid var(--border);overflow:hidden;position:relative;cursor:pointer;transition:background .25s}
+.proj-card:last-child{border-right:none}
+.proj-card:hover{background:var(--ink)}
+.proj-thumb{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border);transition:border-color .25s}
+.proj-card:hover .proj-thumb{border-color:#2a2a2a}
+.thumb-cv{background:#e8e0d4}
+.thumb-gl{background:#d4dce8}
+.thumb-num{font-family:'Bebas Neue',sans-serif;font-size:120px;color:rgba(0,0,0,.06);line-height:1;user-select:none;transition:all .25s}
+.proj-card:hover .thumb-num{color:rgba(255,255,255,.04)}
+.proj-thumb-icon{position:absolute;width:56px;height:56px;border-radius:12px;background:white;display:flex;align-items:center;justify-content:center;font-size:24px;transition:transform .25s}
+.proj-card:hover .proj-thumb-icon{transform:scale(1.1) rotate(-5deg)}
+.proj-body{padding:24px 28px}
+.proj-type{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;transition:color .25s}
+.proj-card:hover .proj-type{color:rgba(255,255,255,.4)}
+.proj-name{font-size:18px;font-weight:600;color:var(--ink);margin-bottom:8px;transition:color .25s}
+.proj-card:hover .proj-name{color:white}
+.proj-desc{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:14px;transition:color .25s}
+.proj-card:hover .proj-desc{color:rgba(255,255,255,.4)}
+.proj-tags{display:flex;flex-wrap:wrap;gap:4px}
+.ptag{font-size:10px;padding:3px 10px;border-radius:100px;background:var(--light);border:1px solid var(--border);color:var(--ink2);font-weight:500;transition:all .25s}
+.proj-card:hover .ptag{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.6)}
+.proj-arrow{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .25s}
+.proj-card:hover .proj-arrow{opacity:1;border-color:rgba(255,255,255,.3);color:white}
+
+/* PROCESS */
+.process{padding:56px 40px;border-bottom:1px solid var(--border)}
+.proc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px}
+.proc-title{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:.95;letter-spacing:-1px;color:var(--ink)}
+.proc-sub{font-size:12px;color:var(--muted);max-width:220px;line-height:1.65;text-align:right}
+.proc-rows{display:flex;flex-direction:column;gap:0}
+.proc-row{display:grid;grid-template-columns:200px 1fr;gap:0;padding:20px 0;border-bottom:1px solid var(--border);transition:all .2s;cursor:default}
+.proc-row:first-child{border-top:1px solid var(--border)}
+.proc-row:hover{background:rgba(232,83,58,.04)}
+.proc-step{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink);padding-top:2px}
+.proc-step em{color:var(--muted);font-style:normal;display:block;margin-top:2px;font-weight:400;font-size:10px}
+.proc-body{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* CONTACT */
+.contact{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
+.contact-left{padding:56px 40px;border-right:1px solid var(--border)}
+.contact-big{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:.95;letter-spacing:-1px;color:var(--ink);margin-bottom:28px}
+.contact-big em{color:var(--accent)}
+.contact-form{display:flex;flex-direction:column;gap:0}
+.cf-group{border-bottom:1px solid var(--border);position:relative}
+.cf-group:first-child{border-top:1px solid var(--border)}
+.cf-input{width:100%;border:none;background:transparent;font-size:14px;color:var(--ink);padding:18px 0;outline:none;font-family:'Space Grotesk',sans-serif;font-weight:400}
+.cf-input::placeholder{color:var(--border)}
+.cf-input:focus::placeholder{color:var(--muted)}
+textarea.cf-input{resize:none;height:96px}
+.cf-submit{margin-top:20px;display:flex;align-items:center;gap:12px;cursor:pointer;width:fit-content}
+.cf-submit-text{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:var(--accent);padding:14px 28px;border-radius:2px;display:flex;align-items:center;gap:8px;transition:opacity .2s}
+.cf-submit-text:hover{opacity:.85}
+.contact-right{padding:56px 40px;display:flex;flex-direction:column;justify-content:space-between}
+.contact-info-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.contact-info-val{font-size:22px;font-weight:300;color:var(--ink);line-height:1.3;margin-bottom:40px}
+.social-links{display:flex;gap:16px}
+.soc-link{width:40px;height:40px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:16px;cursor:pointer;transition:all .2s}
+.soc-link:hover{border-color:var(--ink);color:var(--ink)}
+
+/* FOOTER */
+.footer{display:flex;align-items:center;justify-content:space-between;padding:20px 40px}
+.footer-l{font-size:11px;color:var(--muted);letter-spacing:.5px}
+.footer-avail{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted)}
+.avail-dot{width:6px;height:6px;border-radius:50%;background:#4caf7d;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-name">M Dwi Fachreza</div>
+  <div class="nav-links">
+    <a onclick="document.getElementById('s-about').scrollIntoView({behavior:'smooth'})">About</a>
+    <a onclick="document.getElementById('s-projects').scrollIntoView({behavior:'smooth'})">Portfolio</a>
+    <a onclick="document.getElementById('s-process').scrollIntoView({behavior:'smooth'})">Process</a>
+    <a onclick="document.getElementById('s-contact').scrollIntoView({behavior:'smooth'})">Contacts</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-photo">
+    <div class="photo-bg-blob"></div>
+    <div class="photo-placeholder">
+      <div class="photo-silhouette"></div>
+      <span class="photo-label">Add your photo here</span>
+    </div>
+  </div>
+  <div class="hero-title-wrap">
+    <p class="hero-tag">Web Developer</p>
+    <span class="hero-line1">WEB</span>
+    <span class="hero-line2">DEVELOPER</span>
+    <div class="hero-sub-row">
+      <p class="hero-desc">
+        <strong>M Dwi Fachreza</strong> — Saya tidak berdiam diri dan terus berkembang. Fokus pada pembuatan aplikasi web, sistem internal perusahaan, dan solusi digital yang berdampak nyata bagi bisnis.
+      </p>
+      <div class="hero-cta" onclick="document.getElementById('s-projects').scrollIntoView({behavior:'smooth'})">
+        <span class="hero-cta-text">Recent Works</span>
+        <div class="hero-cta-circle">
+          <i class="ti ti-arrow-right" style="font-size:18px" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="statsbar">
+  <div class="statitem">
+    <div class="stat-n">2<em>+</em></div>
+    <div class="stat-l">Projects Delivered</div>
+  </div>
+  <div class="statitem">
+    <div class="stat-n">100<em>%</em></div>
+    <div class="stat-l">Client Satisfaction</div>
+  </div>
+  <div class="statitem">
+    <div class="stat-n">∞</div>
+    <div class="stat-l">Commitment to Quality</div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="mq-item accent">Web Developer</span>
+    <span class="mq-item">React.js</span>
+    <span class="mq-item">Vue.js</span>
+    <span class="mq-item accent">Laravel</span>
+    <span class="mq-item">Tailwind CSS</span>
+    <span class="mq-item">MySQL</span>
+    <span class="mq-item accent">Automation</span>
+    <span class="mq-item">JavaScript</span>
+    <span class="mq-item">Bootstrap</span>
+    <span class="mq-item accent">Web Developer</span>
+    <span class="mq-item">React.js</span>
+    <span class="mq-item">Vue.js</span>
+    <span class="mq-item accent">Laravel</span>
+    <span class="mq-item">Tailwind CSS</span>
+    <span class="mq-item">MySQL</span>
+    <span class="mq-item accent">Automation</span>
+    <span class="mq-item">JavaScript</span>
+    <span class="mq-item">Bootstrap</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="s-about" class="about">
+  <div class="about-left">
+    <p class="about-eyebrow">About Me</p>
+    <div class="about-h">M DWI<br><em>FACHREZA</em></div>
+    <p class="about-body">Web developer berbasis di Palembang, Indonesia. Spesialisasi membangun antarmuka web yang bersih, cepat, dan fungsional — dari company profile hingga sistem enterprise yang kompleks.</p>
+  </div>
+  <div class="about-right">
+    <div class="hl-row">
+      <div class="hl-row-left">
+        <span class="hl-title">Web Development</span>
+        <span class="hl-desc">Company profile & landing pages</span>
+      </div>
+      <span class="hl-num">01</span>
+    </div>
+    <div class="hl-row">
+      <div class="hl-row-left">
+        <span class="hl-title">Business Application</span>
+        <span class="hl-desc">Internal systems & ERP</span>
+      </div>
+      <span class="hl-num">02</span>
+    </div>
+    <div class="hl-row">
+      <div class="hl-row-left">
+        <span class="hl-title">Automation</span>
+        <span class="hl-desc">Workflow & process optimization</span>
+      </div>
+      <span class="hl-num">03</span>
+    </div>
+    <div class="hl-row">
+      <div class="hl-row-left">
+        <span class="hl-title">Problem Solving</span>
+        <span class="hl-desc">Analysis & technical solutions</span>
+      </div>
+      <span class="hl-num">04</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="s-projects">
+  <div class="projects-header">
+    <div>
+      <p class="proj-eyebrow">Selected Work</p>
+      <div class="proj-big">RECENT<br><em>WORKS</em></div>
+    </div>
+    <div class="proj-scroll-hint">
+      <span>Scroll</span>
+      <i class="ti ti-arrow-right" aria-hidden="true"></i>
+    </div>
+  </div>
+  <div class="proj-grid">
+
+    <div class="proj-card">
+      <div class="proj-thumb thumb-cv">
+        <span class="thumb-num">01</span>
+        <div class="proj-thumb-icon">🏢</div>
+      </div>
+      <div class="proj-arrow"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div>
+      <div class="proj-body">
+        <p class="proj-type">Company Profile</p>
+        <p class="proj-name">CV. Sriwijaya Serangkai</p>
+        <p class="proj-desc">Website resmi distributor Unilever untuk Palembang & Sumatera Selatan — landing page, layanan, kontak, dan profil bisnis profesional.</p>
+        <div class="proj-tags">
+          <span class="ptag">Laravel</span>
+          <span class="ptag">Bootstrap</span>
+          <span class="ptag">JavaScript</span>
+          <span class="ptag">Responsive</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-thumb thumb-gl">
+        <span class="thumb-num">02</span>
+        <div class="proj-thumb-icon">📊</div>
+      </div>
+      <div class="proj-arrow"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div>
+      <div class="proj-body">
+        <p class="proj-type">Web Application</p>
+        <p class="proj-name">Accounting GL System</p>
+        <p class="proj-desc">Aplikasi akuntansi internal — jurnal umum, chart of account, buku besar, trial balance, dan laporan keuangan real-time.</p>
+        <div class="proj-tags">
+          <span class="ptag">Laravel</span>
+          <span class="ptag">MySQL</span>
+          <span class="ptag">Tailwind</span>
+          <span class="ptag">Role User</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="s-process" class="process">
+  <div class="proc-header">
+    <div class="proc-title">WORK<br>STAGES</div>
+    <p class="proc-sub">Alur kerja saya dalam membangun setiap proyek digital</p>
+  </div>
+  <div class="proc-rows">
+    <div class="proc-row">
+      <div class="proc-step">Briefing<em>Stage 01</em></div>
+      <div class="proc-body">Menggali kebutuhan, tujuan bisnis, target pengguna, dan spesifikasi teknis dari klien secara menyeluruh.</div>
+    </div>
+    <div class="proc-row">
+      <div class="proc-step">Research<em>Stage 02</em></div>
+      <div class="proc-body">Analisis visual kompetitor, riset pasar, dan pemahaman mendalam terhadap target pengguna sistem.</div>
+    </div>
+    <div class="proc-row">
+      <div class="proc-step">Prototyping<em>Stage 03</em></div>
+      <div class="proc-body">Merancang struktur logis aplikasi, alur pengguna, dan wireframe sebelum masuk ke pengembangan.</div>
+    </div>
+    <div class="proc-row">
+      <div class="proc-step">Development<em>Stage 04</em></div>
+      <div class="proc-body">Membangun aplikasi dengan kode bersih, responsif, dan teroptimasi menggunakan tech stack modern.</div>
+    </div>
+    <div class="proc-row">
+      <div class="proc-step">Delivery<em>Stage 05</em></div>
+      <div class="proc-body">Review akhir, testing, optimasi performa, dan serah terima proyek beserta dokumentasinya.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="s-contact" class="contact">
+  <div class="contact-left">
+    <div class="contact-big">FIND OUT<br>HOW WE<br>CAN <em>WORK</em></div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="cf-group">
+        <input class="cf-input" type="text" placeholder="Your Name" required />
+      </div>
+      <div class="cf-group">
+        <input class="cf-input" type="email" placeholder="Email Address" required />
+      </div>
+      <div class="cf-group">
+        <textarea class="cf-input" placeholder="Tell me about your project..."></textarea>
+      </div>
+      <div class="cf-submit">
+        <button type="submit" class="cf-submit-text" id="sbtn">
+          Contact Me <i class="ti ti-arrow-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="contact-right">
+    <div>
+      <p class="contact-info-label">Email</p>
+      <p class="contact-info-val">dwifachrez<br>@gmail.com</p>
+      <p class="contact-info-label">Location</p>
+      <p class="contact-info-val">Palembang,<br>Indonesia</p>
+    </div>
+    <div>
+      <p class="contact-info-label" style="margin-bottom:12px">Social Networks</p>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.6">On social networks we will be glad to communicate!</p>
+      <div class="social-links">
+        <div class="soc-link"><i class="ti ti-brand-github" aria-hidden="true"></i></div>
+        <div class="soc-link"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i></div>
+        <div class="soc-link"><i class="ti ti-mail" aria-hidden="true"></i></div>
+        <div class="soc-link"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span class="footer-l">©2026 dwifachreza — All rights reserved</span>
+  <div class="footer-avail">
+    <div class="avail-dot"></div>
+    Available for new projects
+  </div>
+</footer>
+
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  const btn = document.getElementById('sbtn');
+  btn.innerHTML = '<i class="ti ti-check"></i> Sent!';
+  btn.style.background = '#4caf7d';
+  setTimeout(()=>{
+    btn.innerHTML = 'Contact Me <i class="ti ti-arrow-right"></i>';
+    btn.style.background = 'var(--accent)';
+    e.target.reset();
+  }, 2500);
+}
+</script>
+</body>
+</html>
